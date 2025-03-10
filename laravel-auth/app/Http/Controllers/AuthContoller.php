@@ -31,12 +31,12 @@ class AuthContoller extends Controller
         $tokenResult = $user->createToken('Token')->plainTextToken;
         $cookie = cookie('jwt', $tokenResult, 60*24);
         return response([
-            'message'=>'Logged in successfully'
+            'message'=>$tokenResult
         ])->withCookie($cookie);
      }
 
     public function user()
     {
-        return 'Authenticade user';
+        return Auth::User();
     }
 }
